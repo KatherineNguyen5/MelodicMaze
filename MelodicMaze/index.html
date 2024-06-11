@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MelodicMaze</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+.song-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+.song-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+.song-list li:hover {
+            background-color: #f0f0f0;
+        }
+.song-info {
+            font-size: 18px;
+            font-weight: bold;
+        }
+.controls {
+            margin-top: 20px;
+        }
+.controls button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5b3b69;
+            color: #fff;
+            cursor: pointer;
+        }
+.controls button:hover {
+            background-color: #33183f;
+        }
+        :root {
+            --grid-unit: 1rem;
+            --border-radius-base: 0.5rem;
+        }
+        [data-theme="light"] {
+            --color-bg: #bf97dc; /* light purple */
+            --color-fg: #523665;
+        }
+        [data-theme="dark"] {
+            --color-bg: #452d49; /* dark purple */
+            --color-fg: #d2abdf;
+        }
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-fg);
+        }
+.theme-toggle {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+.theme-toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+.theme-toggle-switch input[type="checkbox"] {
+            display: none;
+        }
+.theme-toggle-switch-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #8e7791;
+            border-radius: 20px;
+            transition: 0.4s;
+        }
+    .theme-toggle-switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 0;
+            bottom: 0;
+            background-color: #a264b1;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+    .theme-toggle-switch input[type="checkbox"]:checked +.theme-toggle-switch-slider {
+            background-color: #5a3860;
+        }
+    .theme-toggle-switch input[type="checkbox"]:checked +.theme-toggle-switch-slider:before {
+            transform: translateX(20px);
+        }
+        #search-bar {
+    background-color: #cbadde;
+    width: 40%;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid #cbadde;
+    border-radius: 5px;
+        }
+        #search-button {
+    background-color: #794e95;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+    #search-button:hover {
+    background-color: #6a356f;
+    }
+    #result {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    }
+    </style>
+</head>
+<body data-theme="light">
+    <h1>MelodicMaze</h1>
+    <ul class="song-list">
+        <li data-song="heat_waves.mp3">Heat Waves - Glass Animals</li>
+        <li data-song="stay.mp3">Stay - The Kid LAROI & Justin Bieber</li>
+        <li data-song="easy_on_me.mp3">Easy On Me - Adele</li>
+    </ul>
+    <div class="controls">
+        <button id="play-pause-btn">Play</button>
+        <button id="next-btn">Next</button>
+        <button id="prev-btn">Previous</button>
+    </div>
+    <div class="song-info"></div>
+</div>
+<div class="theme-toggle">
+<label class="theme-toggle-switch">
+    <input type="checkbox" id="theme-toggle-checkbox">
+<span class="theme-toggle-switch-slider"></span>
+</label>
+</div>
+<script>
+const themeToggleCheckbox = document.querySelector('#theme-toggle-checkbox');
+const body = document.querySelector('body');
+themeToggleCheckbox.addEventListener('change', () => {
+    if (body.getAttribute('data-theme') === 'light') {
+        body.setAttribute('data-theme', 'dark');
+    } else {
+        body.setAttribute('data-theme', 'light');
+    }
+    }
+)
+</script>
+</style>
+</head>
+<body>
+  <h2>Song Search</h2>
+  <input id="search-bar" type="text" placeholder="Search for a song lyric...">
+  <button id="search-button">Search</button>
+  <div id="result"></div>
+
+<script>
+    const searchButton = document.getElementById('search-button');
+    const searchBar = document.getElementById('search-bar');
+    const resultDiv = document.getElementById('result');
+
+    searchButton.addEventListener('click', () => {
+    const lyric = searchBar.value.trim();
+      if (lyric === "You promised the world and I fell for it I put you first and you adored it") {
+        resultDiv.innerHTML = "Lose You to Love Me by Selena Gomez";
+      } else if (lyric === "I'm drunk in the back of the car. And I cried like a baby coming home from the bar") {
+        resultDiv.innerHTML = "Cruel Summer by Taylor Swift";
+       } else if (lyric === "You just want attention, you don't want my heart") {
+            resultDiv.innerHTML = "Attention by Charlie Puth";
+      } else {
+        resultDiv.innerHTML = "No result found for this lyric";
+      }
+    });
+  </script>
+</script>
+</body>
+</html>
