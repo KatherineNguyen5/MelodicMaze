@@ -129,6 +129,7 @@
         <li data-song="stay.mp3">Stay - The Kid LAROI & Justin Bieber</li>
         <li data-song="easy_on_me.mp3">Easy On Me - Adele</li>
     </ul>
+    <iframe id="video" width="420" height="315" src="//www.youtube.com/embed/X-yIEMduRXk"></iframe>
     <div class="controls">
         <button id="play-pause-btn">Play</button>
         <button id="next-btn">Next</button>
